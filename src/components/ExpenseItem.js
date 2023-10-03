@@ -1,20 +1,14 @@
 import React from 'react';
 import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
+import ExpenseDetails from './ExpenseDetails';
 
 function ExpenseItem(props) {
-// const expenseDate= new Date(2023,2,10);
-// const expenseTitle = 'Car Insurance';
-// const expenseAmount = 294.67;
-// const locationOfExpenditure = 'Mall';
+
   return (
     <div className='expense-item'>
-        <div>{props.date.toISOString()}</div>
-      <div className='expense-item__description'>
-      <h2>{props.title}</h2>
-      <div className="expense-item__price">{props.amount}</div>
-      <div>{props.locationOfExpenditure}</div>
-      </div>
-      
+        <ExpenseDate date={props.date}/>
+        <ExpenseDetails amount={props.amount}  location={props.location}   title={props.title} />
     </div>
   )
 }
