@@ -5,7 +5,7 @@ import Expenses from "./components/Expenses/Expenses";
 const App= () => {
  
   return (
-    <div className="App">
+    <div className="app">
       <h2>Expense Tracker</h2>
      <Expenses />
     </div>
