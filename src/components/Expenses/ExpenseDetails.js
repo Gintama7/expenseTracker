@@ -3,10 +3,8 @@ import React from 'react'
 const ExpenseDetails=(props) => {
   
   const clickHandler=(e)=>{
-    e.preventDefault();
-    const mainDiv = document.querySelector('.details');
-    let subDiv = e.target.parentElement;
-     mainDiv.removeChild(subDiv);
+   e.target.parentElement.remove();
+   
   }
   return (
     <div className='details'>
