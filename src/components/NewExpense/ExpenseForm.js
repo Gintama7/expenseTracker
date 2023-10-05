@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [title,setTitle] = useState('');
     const [amount,setAmount] = useState('');
     const [date,setDate] = useState('');
@@ -26,34 +26,37 @@ const ExpenseForm = () => {
 
     const submitHandler=(e)=>{
         e.preventDefault();
-        const obj = {title,amount,date};
-        console.log(obj);
+        const obj = {title:title,amount:amount,date:new Date(date)};
+        props.onSaveExpenseData(obj);
+        setTitle('');
+        setAmount('');
+        setDate('');
     }
-    // // const inputChangeHandler=(id,value)=>{    // //    Single Function to handle all inputs
-    // //    if(id=== 'title')
-    // {setTitle(value);
-    // }
-    // // }
+
   return (
-      <form action="" className='expenseForm'>
+      <form action="" className='expenseForm' onSubmit={submitHandler}>
         <div className="new-expense__controls">
             <div className="new-expense__control">
                 <label >Title</label>
-                <input type="text" onChange={titleChangeHandler}  />
-                {/* <input type="text" onChange={(e)=>inputChangeHandler('title',e.target.value)}  />     Making one function to handle all changes*/}
+                <input type="text"
+                value={title}
+                 onChange={titleChangeHandler}  />
+
             </div>
             <div className="new-expense__control">
                 <label >Amount</label>
-                <input type="number"  onChange={amountChangeHandler} />
+                <input type="number"
+                 value={amount}  onChange={amountChangeHandler} />
             </div>
             <div className="new-expense__control">
                 <label >Date</label>
-                <input type="date" onChange={dateChangeHandler} />
+                <input type="date"
+                 value={date} onChange={dateChangeHandler} />
             </div>
         </div>
      
      <div className="new-expense__actions">
-        <button type='submit' onClick={submitHandler}>Submit</button>
+        <button type='submit' >Submit</button>
      </div>
       </form>
    
